@@ -5,8 +5,9 @@ import org.jetbrains.kotlin.konan.properties.loadProperties
 plugins {
     id(GradlePluginId.ANDROID_APPLICATION)
     kotlin(GradlePluginId.ANDROID_KTX)
+    kotlin(GradlePluginId.ANDROID_EXTENSIONS_KTX)
     kotlin(GradlePluginId.KAPT)
-    id(GradlePluginId.GOOGLE_SERVICE)
+    id(GradlePluginId.DAGGER_HILT) apply false
     id(GradlePluginId.FIREBASE_CRASHLYTICS)
 }
 

@@ -92,7 +92,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="25dp"
-                android:background="?colorFreground"
+                android:background="?colorForeground"
                 app:tabMode="scrollable"
                 app:tabRippleColor="@android:color/transparent"
                 app:tabTextAppearance="?android:textAppearanceSmall">
