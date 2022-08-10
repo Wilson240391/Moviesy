@@ -5,9 +5,7 @@ import org.jetbrains.kotlin.konan.properties.loadProperties
 plugins {
     id(GradlePluginId.ANDROID_APPLICATION)
     kotlin(GradlePluginId.ANDROID_KTX)
-    kotlin(GradlePluginId.ANDROID_EXTENSIONS_KTX)
     kotlin(GradlePluginId.KAPT)
-    id(GradlePluginId.DAGGER_HILT)
     id(GradlePluginId.GOOGLE_SERVICE)
     id(GradlePluginId.FIREBASE_CRASHLYTICS)
 }
@@ -40,25 +38,25 @@ android {
         buildConfigField("String", "GOOGLE_CLIENT_ID", "\"${gradleLocalProperties(rootDir).getProperty("google_client_id_web")}\"")
     }
 
-    signingConfigs {
-        create(BuildType.RELEASE) {
-            val properties = File("${rootProject.projectDir}/key.properties").loadProperties()
-            storeFile = file(properties["signing.keyFile"] as String)
-            keyPassword = properties["signing.keyPassword"] as String
-            storePassword = properties["signing.storePassword"] as String
-            keyAlias = properties["signing.alias"] as String
-        }
-    }
+//    signingConfigs {
+//        create(BuildType.RELEASE) {
+//            val properties = File("${rootProject.projectDir}/key.properties").loadProperties()
+//            storeFile = file(properties["signing.keyFile"] as String)
+//            keyPassword = properties["signing.keyPassword"] as String
+//            storePassword = properties["signing.storePassword"] as String
+//            keyAlias = properties["signing.alias"] as String
+//        }
+//    }
 
     buildTypes {
-        getByName(BuildType.RELEASE) {
-            isMinifyEnabled = BuildTypeRelease.isMinifyEnabled
-            signingConfig = signingConfigs.getByName(BuildType.RELEASE)
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
+//        getByName(BuildType.RELEASE) {
+//            isMinifyEnabled = BuildTypeRelease.isMinifyEnabled
+//            signingConfig = signingConfigs.getByName(BuildType.RELEASE)
+//            proguardFiles(
+//                getDefaultProguardFile("proguard-android-optimize.txt"),
+//                "proguard-rules.pro"
+//            )
+//        }
         getByName(BuildType.DEBUG) {
             applicationIdSuffix = ".debug"
             isDebuggable = true
@@ -93,12 +91,13 @@ android {
         exclude("META-INF/notice.txt")
         exclude("META-INF/ASL2.0")
     }
+
 }
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    for (moduleId in ModuleDependency.getAllModules().filterNot { it == ModuleDependency.APP })
-        implementation(project(moduleId))
+//    for (moduleId in ModuleDependency.getAllModules().filterNot { it == ModuleDependency.APP })
+//        implementation(project(moduleId))
     implementation(LibraryDependency.KOTLIN_STDLIB)
     implementation(LibraryDependency.APP_COMPAT)
     implementation(LibraryDependency.CORE_KTX)
@@ -185,6 +184,8 @@ dependencies {
     }
     implementation(LibraryDependency.GUAVA_CONFLICT)
     implementation(LibraryDependency.EPOXY_CORE)
+    implementation(project(mapOf("path" to ":app:common")))
+    implementation(project(mapOf("path" to ":app:sheets")))
 
     kapt(LibraryDependency.AUTOBINDINGS_COMPILER)
     kapt(LibraryDependency.GLIDE_COMPILER)
