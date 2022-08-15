@@ -52,7 +52,7 @@ class AppInterface {
         var QUERY_SPAN_DIFFERENCE_UPCOMING = 1
         var CUSTOM_LAYOUT_YTS_SPAN = 8
         const val MOVIE_FETCH_SIZE = 10
-        var IS_PREMIUM_UNLOCKED = false
+        var IS_PREMIUM_UNLOCKED = true
         var IS_ADAPTIVE_SEARCH = true
         var SUGGESTION_SEARCH_TYPE = SearchType.TMDB
 

@@ -63,10 +63,12 @@ object AppSettings {
     fun parseSettings(context: Context) {
         val settingsPref = PreferenceManager.getDefaultSharedPreferences(context)
 
-        AppInterface.IS_PREMIUM_UNLOCKED = settingsPref.getBoolean(
-            PREMIUM_PURCHASE_PREF,
-            AppInterface.IS_PREMIUM_UNLOCKED
-        )
+//        AppInterface.IS_PREMIUM_UNLOCKED = settingsPref.getBoolean(
+//            PREMIUM_PURCHASE_PREF,
+//            AppInterface.IS_PREMIUM_UNLOCKED
+//        )
+
+        AppInterface.IS_PREMIUM_UNLOCKED = true
 
         AppInterface.TMDB_IMAGE_PREFIX = settingsPref.getString(
             TMDB_IMAGE_PREFIX_PREF,
