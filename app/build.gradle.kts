@@ -7,7 +7,7 @@ plugins {
     kotlin(GradlePluginId.ANDROID_KTX)
     kotlin(GradlePluginId.ANDROID_EXTENSIONS_KTX)
     kotlin(GradlePluginId.KAPT)
-    id(GradlePluginId.DAGGER_HILT) apply false
+    id(GradlePluginId.DAGGER_HILT)
     id(GradlePluginId.FIREBASE_CRASHLYTICS)
 }
 
@@ -97,8 +97,8 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-//    for (moduleId in ModuleDependency.getAllModules().filterNot { it == ModuleDependency.APP })
-//        implementation(project(moduleId))
+    for (moduleId in ModuleDependency.getAllModules().filterNot { it == ModuleDependency.APP })
+        implementation(project(moduleId))
     implementation(LibraryDependency.KOTLIN_STDLIB)
     implementation(LibraryDependency.APP_COMPAT)
     implementation(LibraryDependency.CORE_KTX)

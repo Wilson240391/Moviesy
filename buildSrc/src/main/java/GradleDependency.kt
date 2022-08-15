@@ -3,7 +3,7 @@ private object GradlePluginVersion {
     const val ANDROID_GRADLE = "4.1.1"
     const val GOOGLE_SERVICE = "4.3.10"
     const val SAFE_ARGS = CoreVersion.JETPACK_NAVIGATION
-    const val HILT = "2.33-beta"
+    const val HILT = "2.42"
     const val CRASHLYTICS = "2.4.1"
     const val MAVEN_GRADLE = "2.1"
 }

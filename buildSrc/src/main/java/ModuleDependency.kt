@@ -3,7 +3,7 @@ import kotlin.reflect.full.memberProperties
 @Suppress("unused")
 object ModuleDependency {
     const val APP = ":app"
-    const val PURCHASE = ":app:purchase"
+//    const val PURCHASE = ":app:purchase"
     const val COMMON = ":app:common"
     const val AFTER = ":app:after"
     const val SHEETS = ":app:sheets"
