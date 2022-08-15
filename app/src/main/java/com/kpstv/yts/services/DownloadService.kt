@@ -260,7 +260,7 @@ class DownloadService : IntentService("blank") {
                     updateNotification(model, torrent, false, status)
                     DS_LOG(
                         "=> Progress: ${status?.progress}, Download queue: ${torrent?.torrentHandle?.downloadQueue?.size}, " +
-                                "Piece availability: ${torrent?.torrentHandle?.pieceAvailability?.size}, " +
+                                //"Piece availability: ${torrent?.torrentHandle?.pieceAvailability?.size}, " +
                                 "Piece size: ${torrent?.torrentHandle?.torrentFile()
                                     ?.numPieces()}, " +
                                 "Pieces to prepare: ${torrent?.piecesToPrepare}"
@@ -336,19 +336,19 @@ class DownloadService : IntentService("blank") {
              *  val currentSize = Utils.getDirSize(torrent?.saveLocation!!)
              */
 
-            torrentJob = TorrentJob(
-                model.title,
-                model.banner_url,
-                status.progress.toInt(),
-                status.seeds,
-                status.downloadSpeed,
-                0,
-                torrent?.torrentHandle?.torrentFile()?.totalSize(),
-                true,
-                "Downloading",
-                torrent?.torrentHandle?.peerInfo()?.size as Int,
-                magnetHash
-            )
+//            torrentJob = TorrentJob(
+//                model.title,
+//                model.banner_url,
+//                status.progress.toInt(),
+//                status.seeds,
+//                status.downloadSpeed,
+//                0,
+//                torrent?.torrentHandle?.torrentFile()?.totalSize(),
+//                true,
+//                "Downloading",
+//                torrent?.torrentHandle?.peerInfo()?.size as Int,
+//                magnetHash
+//            )
         } else {
             var size = torrent?.torrentHandle?.torrentFile()?.totalSize()
             size ?: kotlin.run { size = 0 }
@@ -361,12 +361,12 @@ class DownloadService : IntentService("blank") {
         /** Update the notification channel */
 
         var speed = status?.downloadSpeed
-        speed ?: kotlin.run { speed = 0f }
+//        speed ?: kotlin.run { speed = 0f }
 
         var progress = status?.progress
         progress ?: kotlin.run { progress = 0f }
 
-        setContentIntent(model, torrentJob)
+//        setContentIntent(model, torrentJob)
 
         val speedString = formatDownloadSpeed(speed as Float)
 
@@ -388,7 +388,7 @@ class DownloadService : IntentService("blank") {
         /** Update the current model */
 
         val intent = Intent(MODEL_UPDATE)
-        intent.putExtra("model", torrentJob)
+//        intent.putExtra("model", torrentJob)
         intent.putExtra("models", pendingJobs)
         LocalBroadcastManager.getInstance(context).sendBroadcast(intent)
     }

@@ -92,7 +92,6 @@ android {
         exclude("META-INF/notice.txt")
         exclude("META-INF/ASL2.0")
     }
-
 }
 
 dependencies {
@@ -185,8 +184,6 @@ dependencies {
     }
     implementation(LibraryDependency.GUAVA_CONFLICT)
     implementation(LibraryDependency.EPOXY_CORE)
-    implementation(project(mapOf("path" to ":app:common")))
-    implementation(project(mapOf("path" to ":app:sheets")))
 
     kapt(LibraryDependency.AUTOBINDINGS_COMPILER)
     kapt(LibraryDependency.GLIDE_COMPILER)
